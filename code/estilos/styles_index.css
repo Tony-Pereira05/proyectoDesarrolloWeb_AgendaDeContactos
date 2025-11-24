@@ -40,7 +40,7 @@ audio,
 iframe,
 embed,
 object {
-    display: block; 
+    display: block;
 }
 
 body {
@@ -54,26 +54,33 @@ body {
 
 main {
     transition: margin-left 0.3s ease;
-    margin-left: 80px; /* Asegurar que tenga un margen izquierdo igual al ancho del sidebar */
-    width: calc(100% - 80px); /* El ancho será el 100% menos 80px */
-    box-sizing: border-box; /* Importante para que el padding y el border se incluyan dentro del ancho calculado */
+    margin-left: 80px;
+    /* Asegurar que tenga un margen izquierdo igual al ancho del sidebar */
+    width: calc(100% - 80px);
+    /* El ancho será el 100% menos 80px */
+    box-sizing: border-box;
+    /* Importante para que el padding y el border se incluyan dentro del ancho calculado */
 }
 
 main.desplazado {
-    margin-left: calc(80px + 250px); /* Ancho del sidebar + ancho del submenu */
-    width: calc(100% - (80px + 250px)); /* Reduce aún más el ancho cuando el submenu está abierto */
+    margin-left: calc(80px + 250px);
+    /* Ancho del sidebar + ancho del submenu */
+    width: calc(100% - (80px + 250px));
+    /* Reduce aún más el ancho cuando el submenu está abierto */
 }
 
 /*-----------------------------------CARDS----------------------------------------*/
 /*--------------------------------------------------------------------------------*/
 #lista-usuarios {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Prueba con 200px */
-    gap: 15px; /* Espacio entre las cards */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* Prueba con 200px */
+    gap: 15px;
+    /* Espacio entre las cards */
     padding: 1rem;
     width: 100%;
     box-sizing: border-box;
-    margin-top: 4rem; 
+    margin-top: 4rem;
 }
 
 .usuario-card {
@@ -81,20 +88,24 @@ main.desplazado {
     padding: 10px;
     margin-bottom: 10px;
     display: flex;
-    flex-direction: column; /* Cambiamos la dirección del flex a columna */
-    align-items: stretch; /* Estirar los elementos horizontalmente */ 
+    flex-direction: column;
+    /* Cambiamos la dirección del flex a columna */
+    align-items: stretch;
+    /* Estirar los elementos horizontalmente */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box; 
+    box-sizing: border-box;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background: linear-gradient(135deg, rgba(81, 98, 175, 0.8), rgba(118, 75, 162, 0.8));
     cursor: pointer;
 }
 
-.usuario-card > * { /* Aplicar un margen a todos los hijos directos para espaciado */
+.usuario-card>* {
+    /* Aplicar un margen a todos los hijos directos para espaciado */
     margin-bottom: 5px;
 }
 
-.usuario-card > *:last-child { /* Eliminar el margen inferior del último elemento */
+.usuario-card>*:last-child {
+    /* Eliminar el margen inferior del último elemento */
     margin-bottom: 0;
 }
 
@@ -106,8 +117,10 @@ main.desplazado {
 .contenedor-nombre-icono {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Espacia el nombre/icono del menú */
-    width: 100%; /* Ocupar todo el ancho de la tarjeta */
+    justify-content: space-between;
+    /* Espacia el nombre/icono del menú */
+    width: 100%;
+    /* Ocupar todo el ancho de la tarjeta */
 }
 
 .nombre-usuario-card {
@@ -130,46 +143,54 @@ main.desplazado {
 /* Ajustar el botón de opciones para que esté más cerca del borde */
 .opciones-card {
     position: relative;
-    margin-left: auto; /* Empuja el menú hacia la derecha */
+    margin-left: auto;
+    /* Empuja el menú hacia la derecha */
 }
 
 .menu-opciones-btn {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px; /* Reducir el padding del botón */
+    padding: 5px;
+    /* Reducir el padding del botón */
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .menu-opciones-btn svg {
-    color: #f0f0f0; 
+    color: #f0f0f0;
 }
 
 
 .menu-opciones-btn:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* Un ligero fondo al pasar el ratón */
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Un ligero fondo al pasar el ratón */
 }
 
 .usuario-card .info-oculta {
-    display: none; /* Ocultar los detalles inicialmente */
+    display: none;
+    /* Ocultar los detalles inicialmente */
     margin-top: 5px;
-    color:#f0f0f0;
+    color: #f0f0f0;
     text-align: justify;
 }
 
 /* Estilos para el menú desplegable */
 .menu-desplegable {
     position: absolute;
-    top: 100%; /* Se coloca debajo del botón */
+    top: 100%;
+    /* Se coloca debajo del botón */
     right: 0;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 2; /* Asegura que esté por encima de otros elementos */
-    display: none; /* Oculto por defecto */
-    min-width: 120px; /* Ancho mínimo del menú */
+    z-index: 2;
+    /* Asegura que esté por encima de otros elementos */
+    display: none;
+    /* Oculto por defecto */
+    min-width: 120px;
+    /* Ancho mínimo del menú */
     padding: 5px 0;
 }
 
@@ -209,7 +230,8 @@ main.desplazado {
     margin-right: 10px;
     font-size: 1em;
     color: #555;
-    width: 16px; /* Para alinear los iconos */
+    width: 16px;
+    /* Para alinear los iconos */
     text-align: center;
 }
 
@@ -220,9 +242,12 @@ main.desplazado {
 
 #lista-usuarios {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Crea columnas de al menos 300px y se ajusta al ancho */
-    gap: 20px; /* Espacio entre las cards */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Crea columnas de al menos 300px y se ajusta al ancho */
+    gap: 20px;
+    /* Espacio entre las cards */
 }
+
 /*--------------------------------FIN CARDS----------------------------------------*/
 /*17*/
 
@@ -230,51 +255,70 @@ main.desplazado {
 /*----------------------------FORM EDITAR USUARIO---------------------------------*/
 /*--------------------------------------------------------------------------------*/
 .form-editar-usuario {
-    -webkit-backdrop-filter: blur(10px); /* Para navegadores WebKit */
-    backdrop-filter: blur(10px); /* Efecto de desenfoque */
-    display: none; /* Oculto por defecto */
+    -webkit-backdrop-filter: blur(10px);
+    /* Para navegadores WebKit */
+    backdrop-filter: blur(10px);
+    /* Efecto de desenfoque */
+    display: none;
+    /* Oculto por defecto */
     margin-top: 10px;
-    padding: 15px; /* Igual padding que el formulario de creación */
-    border-radius: 10px; /* Igual radio de borde */
-    background: rgba(255, 255, 255, 0.1); /* Fondo blanco semitransparente */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Sombra suave */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde blanco sutil */
-    color: #f0f0f0; /* Color del texto */
+    padding: 15px;
+    /* Igual padding que el formulario de creación */
+    border-radius: 10px;
+    /* Igual radio de borde */
+    background: rgba(255, 255, 255, 0.1);
+    /* Fondo blanco semitransparente */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    /* Sombra suave */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Borde blanco sutil */
+    color: #f0f0f0;
+    /* Color del texto */
     grid-template-columns: auto 1fr;
     gap: 10px;
     align-items: center;
 }
 
-.form-editar-usuario > div {
+.form-editar-usuario>div {
     grid-column: 1 / -1;
 }
 
 .form-editar-usuario label {
     font-weight: bold;
-    text-align: left; /* Alineación izquierda para las etiquetas */
-    padding-right: 10px; /* Espacio a la derecha de las etiquetas */
-    color: #f0f0f0; /* Color de las etiquetas */
+    text-align: left;
+    /* Alineación izquierda para las etiquetas */
+    padding-right: 10px;
+    /* Espacio a la derecha de las etiquetas */
+    color: #f0f0f0;
+    /* Color de las etiquetas */
 }
 
 .form-editar-usuario input[type="text"],
 .form-editar-usuario input[type="number"],
 .form-editar-usuario input[type="email"],
 .form-editar-usuario input[type="date"] {
-    padding: 8px; /* Igual padding que los inputs del formulario de creación */
-    border: 1px solid rgba(255, 255, 255, 0.4); /* Borde más claro */
-    border-radius: 4px; /* Igual radio de borde */
+    padding: 8px;
+    /* Igual padding que los inputs del formulario de creación */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    /* Borde más claro */
+    border-radius: 4px;
+    /* Igual radio de borde */
     width: 100%;
     box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.158); /* Fondo semitransparente */
-    color: #f0f0f0; /* Color del texto */
+    background: rgba(255, 255, 255, 0.158);
+    /* Fondo semitransparente */
+    color: #f0f0f0;
+    /* Color del texto */
 }
 
 .form-editar-usuario input::placeholder {
-    color:#f0f0f0; /* Color del placeholder */
+    color: #f0f0f0;
+    /* Color del placeholder */
 }
 
 .form-editar-usuario input[type="date"]::-webkit-calendar-picker-indicator {
-    color: #f0f0f0; /* Color del icono del date picker */
+    color: #f0f0f0;
+    /* Color del icono del date picker */
     cursor: pointer;
     width: 24px;
     height: 24px;
@@ -283,25 +327,32 @@ main.desplazado {
 .botones-editar {
     grid-column: 1 / -1;
     display: flex;
-    justify-content: flex-end; /* Alineación de los botones a la derecha */
+    justify-content: flex-end;
+    /* Alineación de los botones a la derecha */
     gap: 10px;
     margin-top: 10px;
 }
 
 .botones-editar button {
-    padding: 10px 15px; /* Igual padding que los botones del formulario de creación */
-    background: rgba(46, 46, 46, 0.459); /* Fondo semitransparente */
+    padding: 10px 15px;
+    /* Igual padding que los botones del formulario de creación */
+    background: rgba(46, 46, 46, 0.459);
+    /* Fondo semitransparente */
     color: #f0f0f0;
-    border: 1px solid rgba(46, 46, 46, 0.048); /* Borde */
-    border-radius: 5px; /* Igual radio de borde */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    border: 1px solid rgba(46, 46, 46, 0.048);
+    /* Borde */
+    border-radius: 5px;
+    /* Igual radio de borde */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    /* Sombra suave */
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s ease;
 }
 
 .botones-editar button:hover {
-    background-color: rgba(255, 255, 255, 0.25); /* Hover similar */
+    background-color: rgba(255, 255, 255, 0.25);
+    /* Hover similar */
 }
 
 .botones-editar button:active {
@@ -311,17 +362,19 @@ main.desplazado {
 
 /* Estilos para layout más compacto en pantallas más grandes */
 @media (min-width: 600px) {
-    .form-editar-usuario > div {
+    .form-editar-usuario>div {
         grid-column: auto / span 2;
     }
 
     .form-editar-usuario label {
-        text-align: left; /* Aseguramos la alineación izquierda en pantallas grandes */
+        text-align: left;
+        /* Aseguramos la alineación izquierda en pantallas grandes */
         padding-right: 10px;
     }
 
     .botones-editar {
-        justify-content: flex-end; /* Mantenemos la alineación a la derecha de los botones */
+        justify-content: flex-end;
+        /* Mantenemos la alineación a la derecha de los botones */
     }
 }
 
@@ -344,8 +397,8 @@ main.desplazado {
 .search-wrapper .input-holder {
     height: 50px;
     width: 50px;
-    overflow:visible;
-    background: rgba(255,255,255,0);
+    overflow: visible;
+    background: rgba(255, 255, 255, 0);
     border-radius: 6px;
     position: relative;
     transition: all 0.3s ease-in-out;
@@ -357,7 +410,7 @@ main.desplazado {
 .search-wrapper.active .input-holder {
     width: 300px;
     border-radius: 25px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
 }
 
@@ -387,8 +440,10 @@ main.desplazado {
 }
 
 .search-wrapper .input-holder .search-input::placeholder {
-    color: #FFF; /* Reemplaza 'red' con el color que desees */
-    opacity: 0.2; /* Asegúrate de que la opacidad sea 1 para que sea visible */
+    color: #FFF;
+    /* Reemplaza 'red' con el color que desees */
+    opacity: 0.2;
+    /* Asegúrate de que la opacidad sea 1 para que sea visible */
 }
 
 .search-wrapper .input-holder .search-icon {
@@ -458,7 +513,8 @@ main.desplazado {
 .sidebar {
     background-color: #2e2e2e;
     color: #f0f0f0;
-    width: 80px; /* Ancho reducido */
+    width: 80px;
+    /* Ancho reducido */
     height: 100%;
     position: fixed;
     top: 0;
@@ -466,8 +522,10 @@ main.desplazado {
     padding-top: 20px;
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.637);
-    overflow-x: hidden; /* Ocultar el contenido que exceda el ancho */
-    transition: width 0.3s ease; /* Transición suave para el ancho si lo expandemos */
+    overflow-x: hidden;
+    /* Ocultar el contenido que exceda el ancho */
+    transition: width 0.3s ease;
+    /* Transición suave para el ancho si lo expandemos */
     z-index: 20;
 }
 
@@ -485,8 +543,10 @@ main.desplazado {
 
 .sidebar-nav li {
     margin-bottom: 20px;
-    display: flex; /* Convertir el li en un contenedor flex */
-    justify-content: center; /* Centrar horizontalmente el botón */
+    display: flex;
+    /* Convertir el li en un contenedor flex */
+    justify-content: center;
+    /* Centrar horizontalmente el botón */
 }
 
 .boton-sidebar {
@@ -494,7 +554,7 @@ main.desplazado {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px; 
+    width: 50px;
     padding: 10px 0;
     background-color: transparent;
     color: #f0f0f0;
@@ -502,7 +562,8 @@ main.desplazado {
     border-radius: 20%;
     cursor: pointer;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    /* Sombra suave */
     transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
 }
 
@@ -512,13 +573,16 @@ main.desplazado {
 }
 
 .boton-sidebar:active {
-    background-color: #5a6ac4; /* Un tono más oscuro */
-    transform: scale(0.9); /* Ligeramente más pequeño */
+    background-color: #5a6ac4;
+    /* Un tono más oscuro */
+    transform: scale(0.9);
+    /* Ligeramente más pequeño */
 }
-  
+
 .sidebar-submenu {
     padding-left: 20px;
-    display: none; /* Oculto por defecto */
+    display: none;
+    /* Oculto por defecto */
     z-index: 10;
 }
 
@@ -528,23 +592,30 @@ main.desplazado {
 
 /* Estilos para el submenú desplegable lateral */
 .sidebar-submenu {
-    position: fixed; /* Se superpone al contenido principal */
+    position: fixed;
+    /* Se superpone al contenido principal */
     top: 0;
-    left: 80px; /* Se inicia justo al lado del menú lateral */
+    left: 80px;
+    /* Se inicia justo al lado del menú lateral */
     background-color: #444;
     color: #f0f0f0;
-    width: 250px; /* Ancho del panel desplegable */
+    width: 250px;
+    /* Ancho del panel desplegable */
     height: 100%;
     padding: 20px;
     box-sizing: border-box;
-    z-index: 10; /* Asegurarse de que esté por encima del contenido */
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.308); /* Sombra suave a la izquierda */
-    transform: translateX(-100%); /* Ocultar inicialmente */
+    z-index: 10;
+    /* Asegurarse de que esté por encima del contenido */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.308);
+    /* Sombra suave a la izquierda */
+    transform: translateX(-100%);
+    /* Ocultar inicialmente */
     transition: transform 0.3s ease-in-out;
 }
 
 .sidebar-submenu.mostrar {
-    transform: translateX(0); /* Mostrar el panel desplegable */
+    transform: translateX(0);
+    /* Mostrar el panel desplegable */
 }
 
 .sidebar-submenu .filtro-campo {
@@ -580,83 +651,108 @@ main.desplazado {
 /*--------------------------------------------------------------------------------*/
 
 #form-crear-usuario {
-    -webkit-backdrop-filter: blur(10px); /* Para navegadores basados en WebKit (Safari, Chrome) */
-    backdrop-filter: blur(10px); /* Aplica el efecto de desenfoque al fondo */
+    -webkit-backdrop-filter: blur(10px);
+    /* Para navegadores basados en WebKit (Safari, Chrome) */
+    backdrop-filter: blur(10px);
+    /* Aplica el efecto de desenfoque al fondo */
     margin-bottom: 20px;
     padding: 15px;
-    border-radius: 10px; /* Un radio de borde un poco más pronunciado suele verse bien con el efecto glass */
-    background: rgba(255, 255, 255, 0.1); /* Fondo blanco semitransparente */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Sombra suave para dar profundidad */ 
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde blanco sutil y semitransparente */
-    color: #f0f0f0; /* Asegúrate de que el texto sea legible sobre el fondo */
+    border-radius: 10px;
+    /* Un radio de borde un poco más pronunciado suele verse bien con el efecto glass */
+    background: rgba(255, 255, 255, 0.1);
+    /* Fondo blanco semitransparente */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    /* Sombra suave para dar profundidad */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Borde blanco sutil y semitransparente */
+    color: #f0f0f0;
+    /* Asegúrate de que el texto sea legible sobre el fondo */
     display: grid;
     gap: 10px;
     grid-template-columns: auto 1fr;
     align-items: center;
 }
 
-#form-crear-usuario > div {
-    grid-column: 1 / -1; /* Ocupa todo el ancho para cada grupo label-input por defecto */
+#form-crear-usuario>div {
+    grid-column: 1 / -1;
+    /* Ocupa todo el ancho para cada grupo label-input por defecto */
 }
 
 #form-crear-usuario label {
-    color: #f0f0f0; /* Asegúrate de que las etiquetas sean legibles */
+    color: #f0f0f0;
+    /* Asegúrate de que las etiquetas sean legibles */
 }
 
 #form-crear-usuario input[type="text"],
 #form-crear-usuario input[type="number"],
 #form-crear-usuario input[type="email"],
 #form-crear-usuario input[type="date"],
-#form-crear-usuario select { 
+#form-crear-usuario select {
     padding: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.4); /* Borde más claro para los inputs */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    /* Borde más claro para los inputs */
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.158); /* Fondo semitransparente para los inputs */
-    color: #f0f0f0; /* Color del texto dentro de los inputs */
+    background: rgba(255, 255, 255, 0.158);
+    /* Fondo semitransparente para los inputs */
+    color: #f0f0f0;
+    /* Color del texto dentro de los inputs */
 }
 
-#form-crear-usuario input::placeholder { /* Estilo para el texto de los placeholders */
-    color:#f0f0f0;
+#form-crear-usuario input::placeholder {
+    /* Estilo para el texto de los placeholders */
+    color: #f0f0f0;
 }
 
 /* Cambiar tamaño del ícono del date picker */
 input[type="date"]::-webkit-calendar-picker-indicator {
-    color: #f0f0f0; /* color del ícono (a veces no aplica) */
+    color: #f0f0f0;
+    /* color del ícono (a veces no aplica) */
     cursor: pointer;
     width: 24px;
     height: 24px;
 }
 
-#ordenar-fecha-btn, #ordenar-nombre-btn, #limpiar-filtro-fecha, 
+#ordenar-fecha-btn,
+#ordenar-nombre-btn,
+#limpiar-filtro-fecha,
 #form-crear-usuario button[type="submit"] {
-    grid-column: 1 / -1; /* Ocupa todo el ancho para el botón */
+    grid-column: 1 / -1;
+    /* Ocupa todo el ancho para el botón */
     padding: 10px 15px;
-    background: rgba(46, 46, 46, 0.459); /* Fondo semitransparente para el botón */
+    background: rgba(46, 46, 46, 0.459);
+    /* Fondo semitransparente para el botón */
     color: #f0f0f0;
-    border: 1px solid rgba(46, 46, 46, 0.048); /* Borde para el botón */
+    border: 1px solid rgba(46, 46, 46, 0.048);
+    /* Borde para el botón */
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    /* Sombra suave */
     cursor: pointer;
     font-size: 1em;
-    transition: background-color 0.3s ease; /* Transición suave para el hover */
+    transition: background-color 0.3s ease;
+    /* Transición suave para el hover */
 }
 
 #form-crear-usuario button[type="submit"]:hover {
-    background-color: rgba(255, 255, 255, 0.25); /* Ligeramente más oscuro al pasar el ratón */
+    background-color: rgba(255, 255, 255, 0.25);
+    /* Ligeramente más oscuro al pasar el ratón */
 }
 
 #form-crear-usuario button:active {
-    transform: scale(0.9); /* Ligeramente más pequeño */
-    background-color: rgba(46, 46, 46, 0.7); /* Aumenta la opacidad, haciéndolo más oscuro */
+    transform: scale(0.9);
+    /* Ligeramente más pequeño */
+    background-color: rgba(46, 46, 46, 0.7);
+    /* Aumenta la opacidad, haciéndolo más oscuro */
 }
 
 
 /* Estilos para layout más compacto en pantallas más grandes */
 @media (min-width: 600px) {
-    #form-crear-usuario > div {
-        grid-column: auto / span 2; /* Label y input en la misma fila */
+    #form-crear-usuario>div {
+        grid-column: auto / span 2;
+        /* Label y input en la misma fila */
     }
 
     #form-crear-usuario label {
@@ -665,9 +761,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 
     #form-crear-usuario button[type="submit"] {
-        grid-column: 1 / -1; /* El botón sigue ocupando todo el ancho */
+        grid-column: 1 / -1;
+        /* El botón sigue ocupando todo el ancho */
     }
 }
+
 /*-------------------------FIN FORM CREAR USUARIO---------------------------------*/
 
 
@@ -675,21 +773,27 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 /*--------------------------------------------------------------------------------*/
 #filtrar-opciones input[type="number"] {
     padding: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.4); /* Borde más claro para los inputs */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    /* Borde más claro para los inputs */
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.158); /* Fondo semitransparente para los inputs */
-    color: #f0f0f0; /* Color del texto dentro de los inputs */
+    background: rgba(255, 255, 255, 0.158);
+    /* Fondo semitransparente para los inputs */
+    color: #f0f0f0;
+    /* Color del texto dentro de los inputs */
 }
 
 #limpiar-filtro-fecha:hover {
-    background-color: rgba(255, 255, 255, 0.25); /* Ligeramente más oscuro al pasar el ratón */
+    background-color: rgba(255, 255, 255, 0.25);
+    /* Ligeramente más oscuro al pasar el ratón */
 }
 
 #limpiar-filtro-fecha:active {
-    transform: scale(0.9); /* Ligeramente más pequeño */
-    background-color: rgba(46, 46, 46, 0.7); /* Aumenta la opacidad, haciéndolo más oscuro */
+    transform: scale(0.9);
+    /* Ligeramente más pequeño */
+    background-color: rgba(46, 46, 46, 0.7);
+    /* Aumenta la opacidad, haciéndolo más oscuro */
 }
 
 /*-----------------------------FIN FILTRO POR FECHA-----------------------------------*/
@@ -699,22 +803,29 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 /*-----------------------------------ORDENAR POR-----------------------------------*/
 /*--------------------------------------------------------------------------------*/
 #ordenar-nombre-btn:hover {
-    background-color: rgba(255, 255, 255, 0.25); /* Ligeramente más oscuro al pasar el ratón */
+    background-color: rgba(255, 255, 255, 0.25);
+    /* Ligeramente más oscuro al pasar el ratón */
 }
 
 #ordenar-nombre-btn:active {
-    transform: scale(0.9); /* Ligeramente más pequeño */
-    background-color: rgba(46, 46, 46, 0.7); /* Aumenta la opacidad, haciéndolo más oscuro */
+    transform: scale(0.9);
+    /* Ligeramente más pequeño */
+    background-color: rgba(46, 46, 46, 0.7);
+    /* Aumenta la opacidad, haciéndolo más oscuro */
 }
 
 #ordenar-fecha-btn:hover {
-    background-color: rgba(255, 255, 255, 0.25); /* Ligeramente más oscuro al pasar el ratón */
+    background-color: rgba(255, 255, 255, 0.25);
+    /* Ligeramente más oscuro al pasar el ratón */
 }
 
 #ordenar-fecha-btn:active {
-    transform: scale(0.9); /* Ligeramente más pequeño */
-    background-color: rgba(46, 46, 46, 0.7); /* Aumenta la opacidad, haciéndolo más oscuro */
+    transform: scale(0.9);
+    /* Ligeramente más pequeño */
+    background-color: rgba(46, 46, 46, 0.7);
+    /* Aumenta la opacidad, haciéndolo más oscuro */
 }
+
 /*-----------------------------------FIN ORDENAR POR--------------------------------------*/
 
 
@@ -722,55 +833,69 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 /*--------------------------------------------------------------------------------*/
 
 #toast-container {
-    position: fixed; /* Posición fija respecto al viewport */
-    top: 20px;       /* Separación de la parte superior */
-    left: 50%;       /* Centrado horizontal */
-    transform: translateX(-50%); /* Ajuste para el centrado real */
-    z-index: 10000;  /* Asegura que esté por encima de todo */
+    position: fixed;
+    /* Posición fija respecto al viewport */
+    top: 20px;
+    /* Separación de la parte superior */
+    left: 50%;
+    /* Centrado horizontal */
+    transform: translateX(-50%);
+    /* Ajuste para el centrado real */
+    z-index: 10000;
+    /* Asegura que esté por encima de todo */
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    gap: 10px;       
-    pointer-events: none; /* Permite hacer clic en elementos debajo */
-    width: auto; /* Ancho se ajusta al contenido */
-    max-width: 90%; /* Máximo para móviles */
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+    /* Permite hacer clic en elementos debajo */
+    width: auto;
+    /* Ancho se ajusta al contenido */
+    max-width: 90%;
+    /* Máximo para móviles */
 }
 
 #toast-container {
-    position: fixed; 
-    top: 20px;       
-    left: 50%;       
-    transform: translateX(-50%); 
-    z-index: 10000;  
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    gap: 12px;       /* Un poco más de espacio entre toasts */
-    pointer-events: none; 
-    width: auto; 
-    max-width: 90%; 
+    align-items: center;
+    gap: 12px;
+    /* Un poco más de espacio entre toasts */
+    pointer-events: none;
+    width: auto;
+    max-width: 90%;
 }
 
 .toast {
     /* Estilo de la tipografía y el contenedor */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    
+
     /* MODIFICACIONES DE TAMAÑO */
-    padding: 15px 20px; /* Más padding para mayor altura y anchura */
-    font-size: 15px;    /* Fuente ligeramente más grande */
-    min-width: 300px;   /* Mínimo de 300px */
-    max-width: 500px;   /* Máximo de 500px para evitar que sea enorme */
-    
+    padding: 15px 20px;
+    /* Más padding para mayor altura y anchura */
+    font-size: 15px;
+    /* Fuente ligeramente más grande */
+    min-width: 300px;
+    /* Mínimo de 300px */
+    max-width: 500px;
+    /* Máximo de 500px para evitar que sea enorme */
+
     font-weight: 500;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra más definida */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    /* Sombra más definida */
     border-radius: 5%;
     border: 1px solid transparent;
-    pointer-events: all; 
-    
+    pointer-events: all;
+
     /* Animación */
     opacity: 0;
-    transform: translateY(-20px); 
+    transform: translateY(-20px);
     transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
@@ -782,7 +907,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* ÉXITO */
 .toast.exito {
-    background-color: #d4edda; 
+    background-color: #d4edda;
     color: #155724;
     border-color: #c3e6cb;
 }
@@ -796,7 +921,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* INFORMACIÓN/EXPORTAR */
 .toast.info {
-    background-color: #fcefdc; 
-    color: #d97706; 
-    border-color: #fae3c3; 
+    background-color: #fcefdc;
+    color: #d97706;
+    border-color: #fae3c3;
+}
+
+/* Toas Festivo */
+
+.toast.fiesta {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    color: #d63384;
+    border: 1px solid #ffc2c7;
+    font-weight: bold;
+    font-size: 16px;
 }

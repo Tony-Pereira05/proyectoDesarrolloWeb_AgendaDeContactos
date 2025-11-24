@@ -7,14 +7,8 @@
     <title>Sistema de Gestión de Contactos</title>    
 </head>
 <body>
-    <!-- ================================================================ -->
-    <!-- CONTENEDOR PRINCIPAL -->
-    <!-- ================================================================ -->
     <div class="auth-container" id="container">
         
-        <!-- ============================================================ -->
-        <!-- FORMULARIO DE REGISTRO -->
-        <!-- ============================================================ -->
         <div class="form-container sign-up-container">
             <form id="signUpForm">
                 <h1>Crear Cuenta</h1>
@@ -66,9 +60,6 @@
             </form>
         </div>
 
-        <!-- ============================================================ -->
-        <!-- FORMULARIO DE LOGIN -->
-        <!-- ============================================================ -->
         <div class="form-container sign-in-container">
             <form id="signInForm">
                 <h1>Iniciar Sesión</h1>
@@ -110,11 +101,34 @@
                     ¿No tienes cuenta? <a href="#" id="mobileSignUp">Regístrate</a>
                 </div>
             </form>
+            
+            <form id="resetRequestForm" style="display: none;">
+                <h1>Recuperar Contraseña</h1>
+                <p class="subtitle">Ingresa tu email y te enviaremos un enlace</p>
+                
+                <div id="mensajeResetRequest" class="mensaje"></div>
+                
+                <div class="form-group">
+                    <input 
+                        type="email" 
+                        class="form-control" 
+                        id="emailReset" 
+                        name="email"
+                        placeholder="Correo electrónico registrado" 
+                        required
+                    />
+                </div>
+                
+                <button type="submit" class="btn-primary" id="btnResetRequest">
+                    Enviar Enlace
+                </button>
+
+                <a href="#" class="forgot-link" id="backToLoginLink" style="margin-top: 20px;">
+                    &larr; Volver a Iniciar Sesión
+                </a>
+            </form>
         </div>
 
-        <!-- ============================================================ -->
-        <!-- OVERLAY DESLIZANTE -->
-        <!-- ============================================================ -->
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
@@ -135,9 +149,6 @@
         </div>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- JAVASCRIPT -->
-    <!-- ================================================================ -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Referencias a elementos
@@ -156,6 +167,14 @@
             const mensajeSignUp = document.getElementById('mensajeSignUp');
             const mensajeSignIn = document.getElementById('mensajeSignIn');
 
+            // --- Referencias para Reseteo ---
+            const forgotLink = document.querySelector('.forgot-link');
+            const resetRequestForm = document.getElementById('resetRequestForm');
+            const backToLoginLink = document.getElementById('backToLoginLink');
+            const mensajeResetRequest = document.getElementById('mensajeResetRequest');
+            const btnResetRequest = document.getElementById('btnResetRequest');
+            // --- Fin Referencias ---
+
             // ============================================================
             // CAMBIO ENTRE PANELES
             // ============================================================
@@ -171,6 +190,7 @@
 
             if (signUpButton) signUpButton.addEventListener('click', activateSignUp);
             if (signInButton) signInButton.addEventListener('click', activateSignIn);
+            
             if (mobileSignUpButton) {
                 mobileSignUpButton.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -183,6 +203,27 @@
                     activateSignIn();
                 });
             }
+
+            // --- Lógica para mostrar/ocultar formulario de reseteo ---
+            if (forgotLink) {
+                forgotLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (signInForm) signInForm.style.display = 'none';
+                    if (resetRequestForm) resetRequestForm.style.display = 'flex';
+                    limpiarMensajes();
+                });
+            }
+
+            if (backToLoginLink) {
+                backToLoginLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (signInForm) signInForm.style.display = 'flex';
+                    if (resetRequestForm) resetRequestForm.style.display = 'none';
+                    limpiarMensajes();
+                });
+            }
+            // --- Fin Lógica Reseteo ---
+
 
             // ============================================================
             // FUNCIÓN: MOSTRAR MENSAJES
@@ -198,99 +239,145 @@
                 mensajeSignUp.className = 'mensaje';
                 mensajeSignIn.style.display = 'none';
                 mensajeSignIn.className = 'mensaje';
+                // Añadido para limpiar el nuevo formulario
+                if (mensajeResetRequest) { 
+                    mensajeResetRequest.style.display = 'none';
+                    mensajeResetRequest.className = 'mensaje';
+                }
             }
 
             // ============================================================
             // SUBMIT FORMULARIO DE REGISTRO
             // ============================================================
-            signUpForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                btnSignUp.disabled = true;
-                btnSignUp.innerHTML = '<span class="spinner-border"></span>CARGANDO...';
-                
-                const formData = new FormData(signUpForm);
-                
-                // Petición al servidor
-                fetch('php/registro.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error en la respuesta del servidor');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success) {
-                        mostrarMensaje(mensajeSignUp, data.message || '¡Cuenta creada exitosamente!', 'success');
-                        
-                        // Resetear formulario
-                        signUpForm.reset();
-                        
-                        // Cambiar a login después de 2 segundos
-                        setTimeout(function() {
-                            activateSignIn();
-                            mostrarMensaje(mensajeSignIn, 'Ahora puedes iniciar sesión con tu cuenta', 'success');
-                        }, 2000);
-                    } else {
-                        mostrarMensaje(mensajeSignUp, data.message || 'Error al crear la cuenta', 'error');
-                    }
+            if (signUpForm) {
+                signUpForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
                     
-                    btnSignUp.disabled = false;
-                    btnSignUp.innerHTML = 'REGISTRARSE';
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    mostrarMensaje(mensajeSignUp, 'Error en la conexión. Por favor intenta nuevamente.', 'error');
-                    btnSignUp.disabled = false;
-                    btnSignUp.innerHTML = 'REGISTRARSE';
+                    btnSignUp.disabled = true;
+                    btnSignUp.innerHTML = '<span class="spinner-border"></span>CARGANDO...';
+                    
+                    const formData = new FormData(signUpForm);
+                    
+                    fetch('php/registro.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error en la respuesta del servidor');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            mostrarMensaje(mensajeSignUp, data.message || '¡Cuenta creada exitosamente!', 'success');
+                            signUpForm.reset();
+                            setTimeout(function() {
+                                activateSignIn();
+                                mostrarMensaje(mensajeSignIn, 'Ahora puedes iniciar sesión con tu cuenta', 'success');
+                            }, 2000);
+                        } else {
+                            mostrarMensaje(mensajeSignUp, data.message || 'Error al crear la cuenta', 'error');
+                        }
+                        
+                        btnSignUp.disabled = false;
+                        btnSignUp.innerHTML = 'REGISTRARSE';
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        mostrarMensaje(mensajeSignUp, 'Error en la conexión. Por favor intenta nuevamente.', 'error');
+                        btnSignUp.disabled = false;
+                        btnSignUp.innerHTML = 'REGISTRARSE';
+                    });
                 });
-            });
+            }
 
             // ============================================================
-            // SUBMIT FORMULARIO DE LOGIN
+            // SUBMIT FORMULARLIOS DE LOGIN
             // ============================================================
-            signInForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                btnSignIn.disabled = true;
-                btnSignIn.innerHTML = '<span class="spinner-border"></span>CARGANDO...';
-                
-                const formData = new FormData(signInForm);
-                
-                // Petición al servidor
-                fetch('php/valida.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error en la respuesta del servidor');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success) {
-                        mostrarMensaje(mensajeSignIn, '¡Bienvenido! Redirigiendo...', 'success');
-                        
-                        setTimeout(function() {
-                            window.location.href = 'index.php';
-                        }, 1000);
-                    } else {
-                        mostrarMensaje(mensajeSignIn, data.message || 'Usuario o contraseña incorrectos', 'error');
+            if (signInForm) {
+                signInForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    btnSignIn.disabled = true;
+                    btnSignIn.innerHTML = '<span class="spinner-border"></span>CARGANDO...';
+                    
+                    const formData = new FormData(signInForm);
+                    
+                    fetch('php/valida.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error en la respuesta del servidor');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            mostrarMensaje(mensajeSignIn, '¡Bienvenido! Redirigiendo...', 'success');
+                            setTimeout(function() {
+                                window.location.href = 'index.php';
+                            }, 1000);
+                        } else {
+                            mostrarMensaje(mensajeSignIn, data.message || 'Usuario o contraseña incorrectos', 'error');
+                            btnSignIn.disabled = false;
+                            btnSignIn.innerHTML = 'INICIAR SESIÓN';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        mostrarMensaje(mensajeSignIn, 'Error en la conexión. Por favor intenta nuevamente.', 'error');
                         btnSignIn.disabled = false;
                         btnSignIn.innerHTML = 'INICIAR SESIÓN';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    mostrarMensaje(mensajeSignIn, 'Error en la conexión. Por favor intenta nuevamente.', 'error');
-                    btnSignIn.disabled = false;
-                    btnSignIn.innerHTML = 'INICIAR SESIÓN';
+                    });
                 });
-            });
+            } // <-- Aquí cerraba el listener de signInForm
+            
+            // (La línea extra "});" que tenías aquí ha sido ELIMINADA)
+
+            // ============================================================
+            // SUBMIT FORMULARIO DE SOLICITUD DE RESETEO
+            // ============================================================
+            if (resetRequestForm) {
+                resetRequestForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    btnResetRequest.disabled = true;
+                    btnResetRequest.innerHTML = '<span class="spinner-border"></span>ENVIANDO...';
+                    
+                    const formData = new FormData(resetRequestForm);
+                    
+                    fetch('php/solicitar_reset.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error en la respuesta del servidor');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            mostrarMensaje(mensajeResetRequest, data.message, 'success');
+                            resetRequestForm.reset();
+                        } else {
+                            mostrarMensaje(mensajeResetRequest, data.message, 'error');
+                        }
+                        btnResetRequest.disabled = false;
+                        btnResetRequest.innerHTML = 'ENVIAR ENLACE';
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        mostrarMensaje(mensajeResetRequest, 'Error en la conexión. Intenta nuevamente.', 'error');
+                        btnResetRequest.disabled = false;
+                        btnResetRequest.innerHTML = 'ENVIAR ENLACE';
+                    });
+                });
+            }
+            // --- FIN DE BLOQUE NUEVO ---
 
             // ============================================================
             // LIMPIAR MENSAJES AL ESCRIBIR
@@ -309,7 +396,8 @@
                     }
                 });
             });
-        });
+            
+        }); // <-- ESTE ES EL CIERRE CORRECTO DEL DOMContentLoaded
     </script>
 </body>
 </html>

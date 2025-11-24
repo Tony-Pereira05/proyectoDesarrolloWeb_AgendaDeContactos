@@ -107,6 +107,11 @@ $nombre_usuario = $_SESSION['nombre'] ?? 'Usuario';
                     <li>
                         <button id="exportar-menu-btn" class="boton-sidebar"><i data-feather="upload"></i></button>
                     </li>
+                    <li>
+                    <a href="php/logout.php" class="boton-sidebar" title="Cerrar Sesión">
+                        <i data-feather="log-out"></i>
+                    </a>
+                </li>
                 </ul>
             </nav>
         </aside>

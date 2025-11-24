@@ -9,8 +9,8 @@
 
 // Configuración de la base de datos
 define('DB_HOST', 'localhost');      // Servidor (normalmente localhost)
-define('DB_USER', 'joseph');           // Usuario de MySQL (cambiar a root en caso de usar XAMPP)
-define('DB_PASS', 'garavi1619');               // Contraseña  (dejar vacia en caso de usar XAMPP)
+define('DB_USER', 'root');           // Usuario de MySQL (cambiar a root en caso de usar XAMPP)
+define('DB_PASS', '');               // Contraseña  (dejar vacia en caso de usar XAMPP)
 define('DB_NAME', 'agenda_contactos'); // Nombre de la base de datos
 /*NOTA: en caso de usar la app por primera vez entrar phpmyadmin y crear una base de 
 datos vacia con el nombre 'agenda_contactos' e importar el archivo agenda_contactos.sql*/
